@@ -1,0 +1,46 @@
+{
+  "name": "memory-bank-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for remote management of project memory banks",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alioshr/memory-bank-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "memory-bank",
+    "project-management",
+    "documentation",
+    "cline"
+  ],
+  "bugs": {
+    "url": "https://github.com/alioshr/memory-bank-mcp/issues"
+  },
+  "homepage": "https://github.com/alioshr/memory-bank-mcp#readme",
+  "main": "dist/index.js",
+  "author": "Aliosh Pimenta <alioshpimenta@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "init-memory-bank": "./scripts/init-project.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "prepare": "npm run build",
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "clean": "rm -rf dist",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.5.0",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  }
+}
