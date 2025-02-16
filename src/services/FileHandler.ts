@@ -1,7 +1,6 @@
 import fs from "fs-extra";
 import { join } from "path";
 import {
-  CORE_FILES,
   CoreFileName,
   FileMemoryBankCommand,
   FileOperationResult,
@@ -39,10 +38,6 @@ export class FileHandler {
   private async ensureProjectDirectory(projectName: string): Promise<void> {
     const projectPath = this.getProjectPath(projectName);
     await fs.ensureDir(projectPath);
-  }
-
-  private async validateFileName(fileName: string): Promise<boolean> {
-    return CORE_FILES.includes(fileName as CoreFileName);
   }
 
   private async listDirectoryContents(path: string): Promise<string[]> {
