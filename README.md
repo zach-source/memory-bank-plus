@@ -106,7 +106,7 @@ To connect the Memory Bank MCP server to your project, add the following configu
 
 ## Custom IA instructions
 
-This section contains the instructions that should be pasted on the AI custom instructions, either for Cline, Claude or Cursor. You should copy and paste these rules. There is a separate file at `custom-instructions.md` with these rules.
+This section contains the instructions that should be pasted on the AI custom instructions, either for Cline, Claude or Cursor. You should copy and paste these rules. For reference, see [custom-instructions.md](custom-instructions.md) which contains these rules.
 
 # Memory Bank via MCP
 
@@ -327,7 +327,7 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 
-[Choose an appropriate license]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
