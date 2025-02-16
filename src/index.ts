@@ -142,12 +142,7 @@ export class MemoryBankServer {
     args: Record<string, unknown>
   ): T {
     const validatedArgs = args as T;
-    if (!CORE_FILES.includes(validatedArgs.fileName as CoreFileName)) {
-      throw new McpError(
-        ErrorCode.InvalidParams,
-        `Invalid fileName. Must be one of: ${CORE_FILES.join(", ")}`
-      );
-    }
+    // TODO: Validate args for future requirements
     return validatedArgs;
   }
 

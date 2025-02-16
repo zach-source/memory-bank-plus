@@ -97,14 +97,6 @@ export class FileHandler {
         };
       }
 
-      // Validate file name
-      if (!(await this.validateFileName(command.fileName))) {
-        return {
-          success: false,
-          error: `Invalid file name. Must be one of: ${CORE_FILES.join(", ")}`,
-        };
-      }
-
       // Ensure project directory exists
       await this.ensureProjectDirectory(command.projectName);
 
