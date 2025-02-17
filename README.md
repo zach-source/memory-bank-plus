@@ -1,5 +1,7 @@
 # Memory Bank MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@alioshr/memory-bank-mcp)](https://smithery.ai/server/@alioshr/memory-bank-mcp)
+
 A Model Context Protocol (MCP) server implementation for remote memory bank management, inspired by [Cline Memory Bank](https://github.com/nickbaumann98/cline_docs/blob/main/prompting/custom%20instructions%20library/cline-memory-bank.md).
 
 ## Overview
@@ -37,6 +39,15 @@ The Memory Bank MCP Server transforms traditional file-based memory banks into a
 
 ## Installation
 
+### Installing via Smithery
+
+To install Memory Bank Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@alioshr/memory-bank-mcp):
+
+```bash
+npx -y @smithery/cli install @alioshr/memory-bank-mcp --client claude
+```
+
+### Manual Installation
 ```bash
 # Install globally
 npm install -g memory-bank-mcp
