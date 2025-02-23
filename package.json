@@ -20,23 +20,19 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
+    "dist"
   ],
   "author": "Aliosh Pimenta (alioshr)",
   "license": "MIT",
   "type": "module",
+  "bin": {
+    "mcp-server-memory-bank": "dist/index.js"
+  },
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts",
+    "build": "tsc && shx chmod +x dist/*.js",
     "prepare": "npm run build",
-    "test": "echo \"No tests specified yet\" && exit 0",
-    "clean": "rm -rf dist",
-    "rebuild": "npm run clean && npm run build",
-    "prepublishOnly": "npm run test && npm run build",
-    "pack-test": "npm pack --dry-run"
+    "dev": "ts-node src/index.ts",
+    "test": "echo \"No tests specified yet\" && exit 0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.5.0",
@@ -46,6 +42,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.19",
     "typescript": "^5.3.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "shx": "^0.3.4"
   }
 }
