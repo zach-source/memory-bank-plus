@@ -96,6 +96,14 @@ Add the following configuration to your MCP settings:
   - `list_projects`: List available projects
   - `list_project_files`: List files within a project
 
+## For Cursor
+
+For Cursor, open the settings -> features -> add MCP server -> add the following:
+
+```
+env MEMORY_BANK_ROOT=<path-to-bank> npx -y @allpepper/memory-bank-mcp@latest
+```
+
 ## Custom IA instructions
 
 This section contains the instructions that should be pasted on the AI custom instructions, either for Cline, Claude or Cursor, or any other MCP client. You should copy and paste these rules. For reference, see [custom-instructions.md](custom-instructions.md) which contains these rules.
