@@ -39,7 +39,7 @@ The Memory Bank MCP Server transforms traditional file-based memory banks into a
 
 ## Installation
 
-### Installing via Smithery
+### Installation
 
 To install Memory Bank Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@alioshr/memory-bank-mcp):
 
@@ -47,32 +47,12 @@ To install Memory Bank Server for Claude Desktop automatically via [Smithery](ht
 npx -y @smithery/cli install @alioshr/memory-bank-mcp --client claude
 ```
 
-### Manual Installation
-```bash
-# Install globally
-npm install -g memory-bank-mcp
-# or
-pnpm add -g memory-bank-mcp
-
-# Or install locally in your project
-npm install memory-bank-mcp
-# or
-pnpm add memory-bank-mcp
-```
+This will set up the MCP server configuration automatically. Alternatively, you can configure the server manually as described in the Configuration section below.
 
 ## Quick Start
 
-1. Initialize a new project's memory bank:
-
-```bash
-init-memory-bank my-project [optional-root-dir]
-```
-
-This will create a new project directory with all required memory bank files.
-
-2. Configure the MCP server in your settings (see Configuration section below).
-
-3. Start using the memory bank tools in your AI assistant.
+1. Configure the MCP server in your settings (see Configuration section below)
+2. Start using the memory bank tools in your AI assistant
 
 ## Configuration
 
@@ -81,15 +61,15 @@ The memory bank MCP server needs to be configured in your Cline MCP settings fil
 - For Cline extension: `~/Library/Application Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
 - For Claude desktop app: `~/Library/Application Support/Claude/claude_desktop_config.json`
 
-To connect the Memory Bank MCP server to your project, add the following configuration to your MCP settings:
+Add the following configuration to your MCP settings:
 
 ```json
 {
-  "memory-bank": {
-    "command": "node",
-    "args": ["<path-to-dist>/index.js"],
+  "allPepper-memory-bank": {
+    "command": "npx",
+    "args": ["-y", "@allpepper/memory-bank-mcp"],
     "env": {
-      "MEMORY_BANK_ROOT": "<path-to-memory-bank-root>"
+      "MEMORY_BANK_ROOT": "<path-to-bank>"
     },
     "disabled": false,
     "autoApprove": [
@@ -105,10 +85,9 @@ To connect the Memory Bank MCP server to your project, add the following configu
 
 ### Configuration Details
 
-- `<path-to-dist>/index.js`: Path to the built server entry point (e.g., `/path/to/memory-bank-mcp/dist/index.js`)
-- `<path-to-memory-bank-root>`: Directory where project memory banks will be stored (e.g., `/path/to/memory-bank`)
+- `MEMORY_BANK_ROOT`: Directory where project memory banks will be stored (e.g., `/path/to/memory-bank`)
 - `disabled`: Set to `false` to enable the server
-- `autoApprove`: List of operations that don't require explicit user approval
+- `autoApprove`: List of operations that don't require explicit user approval:
   - `memory_bank_read`: Read memory bank files
   - `memory_bank_write`: Create new memory bank files
   - `memory_bank_update`: Update existing memory bank files
