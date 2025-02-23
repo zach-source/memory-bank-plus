@@ -267,10 +267,8 @@ export class MemoryBankServer {
   }
 }
 
-// Start the server if this file is run directly
-if (process.argv[1] === new URL(import.meta.url).pathname) {
-  const server = new MemoryBankServer();
-  server.run().catch(console.error);
-}
+// Start the server when loaded through npx
+const server = new MemoryBankServer();
+server.run().catch(console.error);
 
 export default MemoryBankServer;
