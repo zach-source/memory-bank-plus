@@ -5,5 +5,5 @@ export interface UpdateFileParams {
 }
 
 export interface UpdateFileUseCase {
-  updateFile(params: UpdateFileParams): Promise<void>;
+  updateFile(params: UpdateFileParams): Promise<string | null>;
 }

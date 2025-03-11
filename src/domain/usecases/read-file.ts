@@ -4,5 +4,5 @@ export interface ReadFileParams {
 }
 
 export interface ReadFileUseCase {
-  readFile(params: ReadFileParams): Promise<string>;
+  readFile(params: ReadFileParams): Promise<string | null>;
 }

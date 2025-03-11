@@ -5,5 +5,5 @@ export interface WriteFileParams {
 }
 
 export interface WriteFileUseCase {
-  writeFile(params: WriteFileParams): Promise<void>;
+  writeFile(params: WriteFileParams): Promise<string | null>;
 }
