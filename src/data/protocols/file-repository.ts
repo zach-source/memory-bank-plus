@@ -5,10 +5,10 @@ export interface FileRepository {
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<void>;
+  ): Promise<string | null>;
   updateFile(
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<void>;
+  ): Promise<string | null>;
 }
