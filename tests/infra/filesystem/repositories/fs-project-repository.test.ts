@@ -35,9 +35,7 @@ describe("FsProjectRepository", () => {
       const result = await repository.listProjects();
 
       expect(result).toHaveLength(2);
-      expect(result).toEqual(
-        expect.arrayContaining([{ name: "project1" }, { name: "project2" }])
-      );
+      expect(result).toEqual(expect.arrayContaining(["project1", "project2"]));
     });
   });
 

@@ -23,7 +23,7 @@ describe("ListProjects UseCase", () => {
   test("should return a list of projects on success", async () => {
     const projects = await sut.listProjects();
 
-    expect(projects).toEqual([{ name: "project-1" }, { name: "project-2" }]);
+    expect(projects).toEqual(["project-1", "project-2"]);
   });
 
   test("should propagate errors if repository throws", async () => {

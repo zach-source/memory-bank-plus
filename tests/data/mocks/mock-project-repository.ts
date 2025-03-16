@@ -5,7 +5,7 @@ export class MockProjectRepository implements ProjectRepository {
   private projects = ["project-1", "project-2"];
 
   async listProjects(): Promise<Project[]> {
-    return this.projects.map((name) => ({ name }));
+    return this.projects;
   }
 
   async projectExists(name: string): Promise<boolean> {

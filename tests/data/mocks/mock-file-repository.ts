@@ -33,23 +33,26 @@ export class MockFileRepository implements FileRepository {
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<void> {
+  ): Promise<string | null> {
     if (!this.projectFiles[projectName]) {
       this.projectFiles[projectName] = {};
     }
     this.projectFiles[projectName][fileName] = content;
+    return content;
   }
 
   async updateFile(
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<void> {
+  ): Promise<string | null> {
     if (
       this.projectFiles[projectName] &&
       this.projectFiles[projectName][fileName]
     ) {
       this.projectFiles[projectName][fileName] = content;
+      return content;
     }
+    return null;
   }
 }

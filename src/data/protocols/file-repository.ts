@@ -1,14 +1,16 @@
+import { File } from "../../domain/entities/index.js";
+
 export interface FileRepository {
-  listFiles(projectName: string): Promise<string[]>;
-  loadFile(projectName: string, fileName: string): Promise<string | null>;
+  listFiles(projectName: string): Promise<File[]>;
+  loadFile(projectName: string, fileName: string): Promise<File | null>;
   writeFile(
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<string | null>;
+  ): Promise<File | null>;
   updateFile(
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<string | null>;
+  ): Promise<File | null>;
 }

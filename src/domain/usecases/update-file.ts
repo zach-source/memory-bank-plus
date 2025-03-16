@@ -1,3 +1,5 @@
+import { File } from "../entities/index.js";
+
 export interface UpdateFileParams {
   projectName: string;
   fileName: string;
@@ -5,5 +7,5 @@ export interface UpdateFileParams {
 }
 
 export interface UpdateFileUseCase {
-  updateFile(params: UpdateFileParams): Promise<string | null>;
+  updateFile(params: UpdateFileParams): Promise<File | null>;
 }

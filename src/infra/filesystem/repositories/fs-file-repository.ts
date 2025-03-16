@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
 import { FileRepository } from "../../../data/protocols/file-repository.js";
-
+import { File } from "../../../domain/entities/index.js";
 /**
  * Filesystem implementation of the FileRepository protocol
  */
@@ -17,7 +17,7 @@ export class FsFileRepository implements FileRepository {
    * @param projectName The name of the project
    * @returns An array of file names
    */
-  async listFiles(projectName: string): Promise<string[]> {
+  async listFiles(projectName: string): Promise<File[]> {
     const projectPath = path.join(this.rootDir, projectName);
 
     // Check if project exists
@@ -63,7 +63,7 @@ export class FsFileRepository implements FileRepository {
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<string | null> {
+  ): Promise<File | null> {
     // Ensure project directory exists
     const projectPath = path.join(this.rootDir, projectName);
     await fs.ensureDir(projectPath);
@@ -94,7 +94,7 @@ export class FsFileRepository implements FileRepository {
     projectName: string,
     fileName: string,
     content: string
-  ): Promise<string | null> {
+  ): Promise<File | null> {
     const filePath = path.join(this.rootDir, projectName, fileName);
 
     // Check if file exists

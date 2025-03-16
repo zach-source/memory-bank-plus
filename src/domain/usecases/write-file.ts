@@ -1,3 +1,4 @@
+import { File } from "../entities/index.js";
 export interface WriteFileParams {
   projectName: string;
   fileName: string;
@@ -5,5 +6,5 @@ export interface WriteFileParams {
 }
 
 export interface WriteFileUseCase {
-  writeFile(params: WriteFileParams): Promise<string | null>;
+  writeFile(params: WriteFileParams): Promise<File | null>;
 }
