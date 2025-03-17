@@ -1,9 +1,5 @@
 import { ListProjectFilesUseCase } from "../../../domain/usecases/list-project-files.js";
 import {
-  ListProjectFilesError,
-  ProjectNotFoundError,
-} from "../../errors/index.js";
-import {
   Controller,
   Request,
   Response,
@@ -16,12 +12,4 @@ export interface ListProjectFilesRequest {
 
 export type ListProjectFilesResponse = string[];
 
-export {
-  Controller,
-  ListProjectFilesError,
-  ListProjectFilesUseCase,
-  ProjectNotFoundError,
-  Request,
-  Response,
-  Validator,
-};
+export { Controller, ListProjectFilesUseCase, Request, Response, Validator };

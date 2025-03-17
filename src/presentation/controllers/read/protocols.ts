@@ -1,5 +1,5 @@
 import { ReadFileUseCase } from "../../../domain/usecases/read-file.js";
-import { FileNotFoundError, ReadError } from "../../errors/index.js";
+import { NotFoundError } from "../../errors/index.js";
 import {
   Controller,
   Request,
@@ -22,8 +22,7 @@ export type ReadResponse = string;
 
 export {
   Controller,
-  FileNotFoundError,
-  ReadError,
+  NotFoundError,
   ReadFileUseCase,
   Request,
   Response,

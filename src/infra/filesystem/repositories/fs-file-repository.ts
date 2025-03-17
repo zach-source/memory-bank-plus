@@ -20,7 +20,6 @@ export class FsFileRepository implements FileRepository {
   async listFiles(projectName: string): Promise<File[]> {
     const projectPath = path.join(this.rootDir, projectName);
 
-    // Check if project exists
     const projectExists = await fs.pathExists(projectPath);
     if (!projectExists) {
       return [];
@@ -42,7 +41,6 @@ export class FsFileRepository implements FileRepository {
   ): Promise<string | null> {
     const filePath = path.join(this.rootDir, projectName, fileName);
 
-    // Check if file exists
     const fileExists = await fs.pathExists(filePath);
     if (!fileExists) {
       return null;
@@ -64,22 +62,18 @@ export class FsFileRepository implements FileRepository {
     fileName: string,
     content: string
   ): Promise<File | null> {
-    // Ensure project directory exists
     const projectPath = path.join(this.rootDir, projectName);
     await fs.ensureDir(projectPath);
 
     const filePath = path.join(projectPath, fileName);
 
-    // Check if file already exists
     const fileExists = await fs.pathExists(filePath);
     if (fileExists) {
-      return null; // File already exists
+      return null;
     }
 
-    // Write the file
     await fs.writeFile(filePath, content, "utf-8");
 
-    // Read back the file content
     return await this.loadFile(projectName, fileName);
   }
 
@@ -97,16 +91,13 @@ export class FsFileRepository implements FileRepository {
   ): Promise<File | null> {
     const filePath = path.join(this.rootDir, projectName, fileName);
 
-    // Check if file exists
     const fileExists = await fs.pathExists(filePath);
     if (!fileExists) {
-      return null; // File doesn't exist
+      return null;
     }
 
-    // Update the file
     await fs.writeFile(filePath, content, "utf-8");
 
-    // Read back the file content
     return await this.loadFile(projectName, fileName);
   }
 }

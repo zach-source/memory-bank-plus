@@ -1,7 +1,6 @@
 import { badRequest, notFound, ok, serverError } from "../../helpers/index.js";
 import {
   Controller,
-  FileNotFoundError,
   Request,
   RequestValidator,
   Response,
@@ -36,7 +35,7 @@ export class UpdateController
       });
 
       if (result === null) {
-        return notFound(new FileNotFoundError(projectName, fileName));
+        return notFound(fileName);
       }
 
       return ok(

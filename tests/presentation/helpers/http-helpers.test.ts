@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { UnexpectedError } from "../../../src/presentation/errors/index.js";
+import {
+  NotFoundError,
+  UnexpectedError,
+} from "../../../src/presentation/errors/index.js";
 import {
   badRequest,
   notFound,
@@ -21,11 +24,10 @@ describe("HTTP Helpers", () => {
 
   describe("notFound", () => {
     it("should return 404 status code and the error", () => {
-      const error = new Error("any_error");
-      const response = notFound(error);
+      const response = notFound("any_error");
       expect(response).toEqual({
         statusCode: 404,
-        body: error,
+        body: new NotFoundError("any_error"),
       });
     });
   });

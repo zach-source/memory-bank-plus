@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
-import {
-  FileNotFoundError,
-  ReadRequest,
-} from "../../../../src/presentation/controllers/read/protocols.js";
+import { ReadRequest } from "../../../../src/presentation/controllers/read/protocols.js";
 import { ReadController } from "../../../../src/presentation/controllers/read/read-controller.js";
-import { UnexpectedError } from "../../../../src/presentation/errors/index.js";
+import {
+  NotFoundError,
+  UnexpectedError,
+} from "../../../../src/presentation/errors/index.js";
 import { makeReadFileUseCase, makeValidator } from "../../mocks/index.js";
 
 const makeSut = () => {
@@ -78,7 +78,7 @@ describe("ReadController", () => {
     const response = await sut.handle(request);
     expect(response).toEqual({
       statusCode: 404,
-      body: new FileNotFoundError("any_project", "any_file"),
+      body: new NotFoundError("any_file"),
     });
   });
 

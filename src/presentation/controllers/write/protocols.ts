@@ -1,5 +1,4 @@
 import { WriteFileUseCase } from "../../../domain/usecases/write-file.js";
-import { WriteError } from "../../errors/index.js";
 import {
   Controller,
   Request,
@@ -15,11 +14,4 @@ export interface WriteRequest {
 
 export type WriteResponse = string;
 
-export {
-  Controller,
-  Request,
-  Response,
-  Validator,
-  WriteError,
-  WriteFileUseCase,
-};
+export { Controller, Request, Response, Validator, WriteFileUseCase };

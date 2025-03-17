@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
-import {
-  FileNotFoundError,
-  UpdateRequest,
-} from "../../../../src/presentation/controllers/update/protocols.js";
+import { UpdateRequest } from "../../../../src/presentation/controllers/update/protocols.js";
 import { UpdateController } from "../../../../src/presentation/controllers/update/update-controller.js";
-import { UnexpectedError } from "../../../../src/presentation/errors/index.js";
+import {
+  NotFoundError,
+  UnexpectedError,
+} from "../../../../src/presentation/errors/index.js";
 import { makeUpdateFileUseCase, makeValidator } from "../../mocks/index.js";
 
 const makeSut = () => {
@@ -83,7 +83,7 @@ describe("UpdateController", () => {
     const response = await sut.handle(request);
     expect(response).toEqual({
       statusCode: 404,
-      body: new FileNotFoundError("any_project", "any_file"),
+      body: new NotFoundError("any_file"),
     });
   });
 

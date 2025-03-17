@@ -1,5 +1,5 @@
 import { UpdateFileUseCase } from "../../../domain/usecases/update-file.js";
-import { FileNotFoundError, UpdateError } from "../../errors/index.js";
+import { NotFoundError } from "../../errors/index.js";
 import {
   Controller,
   Request,
@@ -16,11 +16,4 @@ export interface UpdateRequest {
 export type UpdateResponse = string;
 export type RequestValidator<T> = Validator<T>;
 
-export {
-  Controller,
-  FileNotFoundError,
-  Request,
-  Response,
-  UpdateError,
-  UpdateFileUseCase,
-};
+export { Controller, NotFoundError, Request, Response, UpdateFileUseCase };

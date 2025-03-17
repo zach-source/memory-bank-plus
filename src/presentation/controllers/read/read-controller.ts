@@ -1,7 +1,6 @@
 import { badRequest, notFound, ok, serverError } from "../../helpers/index.js";
 import {
   Controller,
-  FileNotFoundError,
   ReadFileUseCase,
   ReadRequest,
   ReadResponse,
@@ -31,7 +30,7 @@ export class ReadController implements Controller<ReadRequest, ReadResponse> {
       });
 
       if (content === null) {
-        return notFound(new FileNotFoundError(projectName, fileName));
+        return notFound(fileName);
       }
 
       return ok(content);

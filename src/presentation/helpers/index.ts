@@ -1,4 +1,4 @@
-import { UnexpectedError } from "../errors/index.js";
+import { NotFoundError, UnexpectedError } from "../errors/index.js";
 import { type Response } from "../protocols/index.js";
 
 export const badRequest = (error: Error): Response => ({
@@ -6,9 +6,9 @@ export const badRequest = (error: Error): Response => ({
   body: error,
 });
 
-export const notFound = (error: Error): Response => ({
+export const notFound = (resourceName: string): Response => ({
   statusCode: 404,
-  body: error,
+  body: new NotFoundError(resourceName),
 });
 
 export const serverError = (error: Error): Response => ({
