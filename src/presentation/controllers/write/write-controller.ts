@@ -14,7 +14,7 @@ export class WriteController
 {
   constructor(
     private readonly writeFileUseCase: WriteFileUseCase,
-    private readonly validator: Validator<WriteRequest>
+    private readonly validator: Validator
   ) {}
 
   async handle(

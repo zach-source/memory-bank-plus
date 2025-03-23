@@ -2,9 +2,9 @@ import { InvalidParamError } from "../presentation/errors/index.js";
 import { Validator } from "../presentation/protocols/validator.js";
 import { NAME_REGEX } from "./constants.js";
 
-export class ParamNameValidator<T> implements Validator<T> {
+export class ParamNameValidator implements Validator {
   constructor(
-    private readonly fieldName: keyof T & string,
+    private readonly fieldName: string,
     private readonly regex: RegExp = NAME_REGEX
   ) {}
 

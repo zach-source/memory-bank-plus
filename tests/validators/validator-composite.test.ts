@@ -6,7 +6,7 @@ interface TestInput {
   field: string;
 }
 
-class ValidatorStub<T> implements Validator<T> {
+class ValidatorStub implements Validator {
   error: Error | null = null;
   callCount = 0;
   input: any = null;
@@ -19,14 +19,14 @@ class ValidatorStub<T> implements Validator<T> {
 }
 
 describe("ValidatorComposite", () => {
-  let validator1: ValidatorStub<TestInput>;
-  let validator2: ValidatorStub<TestInput>;
-  let sut: ValidatorComposite<TestInput>;
+  let validator1: ValidatorStub;
+  let validator2: ValidatorStub;
+  let sut: ValidatorComposite;
 
   beforeEach(() => {
-    validator1 = new ValidatorStub<TestInput>();
-    validator2 = new ValidatorStub<TestInput>();
-    sut = new ValidatorComposite<TestInput>([validator1, validator2]);
+    validator1 = new ValidatorStub();
+    validator2 = new ValidatorStub();
+    sut = new ValidatorComposite([validator1, validator2]);
   });
 
   it("should call validate with correct input in all validators", () => {

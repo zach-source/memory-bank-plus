@@ -1,8 +1,8 @@
 import { InvalidParamError } from "../presentation/errors/index.js";
 import { Validator } from "../presentation/protocols/validator.js";
 
-export class PathSecurityValidator<T> implements Validator<T> {
-  constructor(private readonly fieldName: keyof T & string) {}
+export class PathSecurityValidator implements Validator {
+  constructor(private readonly fieldName: string) {}
 
   validate(input?: any): Error | null {
     if (!input || !input[this.fieldName]) {

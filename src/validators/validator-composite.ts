@@ -1,7 +1,7 @@
 import { Validator } from "../presentation/protocols/validator.js";
 
-export class ValidatorComposite<T> implements Validator<T> {
-  constructor(private readonly validators: Array<Validator<T>>) {}
+export class ValidatorComposite implements Validator {
+  constructor(private readonly validators: Array<Validator>) {}
 
   validate(input?: any): Error | null {
     for (const validator of this.validators) {

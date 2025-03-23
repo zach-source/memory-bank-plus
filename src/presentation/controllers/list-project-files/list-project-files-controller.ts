@@ -14,7 +14,7 @@ export class ListProjectFilesController
 {
   constructor(
     private readonly listProjectFilesUseCase: ListProjectFilesUseCase,
-    private readonly validator: Validator<ListProjectFilesRequest>
+    private readonly validator: Validator
   ) {}
 
   async handle(

@@ -14,7 +14,7 @@ export class UpdateController
 {
   constructor(
     private readonly updateFileUseCase: UpdateFileUseCase,
-    private readonly validator: RequestValidator<UpdateRequest>
+    private readonly validator: RequestValidator
   ) {}
 
   async handle(

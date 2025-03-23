@@ -12,7 +12,7 @@ import {
 export class ReadController implements Controller<ReadRequest, ReadResponse> {
   constructor(
     private readonly readFileUseCase: ReadFileUseCase,
-    private readonly validator: Validator<ReadRequest>
+    private readonly validator: Validator
   ) {}
 
   async handle(request: Request<ReadRequest>): Promise<Response<ReadResponse>> {

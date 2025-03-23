@@ -14,6 +14,6 @@ export interface UpdateRequest {
 }
 
 export type UpdateResponse = string;
-export type RequestValidator<T> = Validator<T>;
+export type RequestValidator = Validator;
 
 export { Controller, NotFoundError, Request, Response, UpdateFileUseCase };
