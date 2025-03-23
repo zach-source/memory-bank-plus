@@ -1,6 +1,6 @@
 {
   "name": "@allpepper/memory-bank-mcp",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "MCP server for remote management of project memory banks",
   "repository": {
     "type": "git",
