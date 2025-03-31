@@ -28,7 +28,7 @@
     "mcp-server-memory-bank": "dist/main/index.js"
   },
   "scripts": {
-    "build": "tsc && shx chmod +x dist/*.js",
+    "build": "tsc && shx chmod +x dist/**/*.js",
     "prepare": "npm run build",
     "dev": "ts-node src/main/index.ts",
     "test": "vitest run",
@@ -43,10 +43,10 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.19",
-    "@vitest/coverage-c8": "^0.33.0",
     "@vitest/coverage-istanbul": "^3.0.8",
+    "@vitest/coverage-v8": "^3.1.1",
     "@vitest/ui": "^3.0.8",
-    "shx": "^0.3.4",
+    "shx": "^0.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
