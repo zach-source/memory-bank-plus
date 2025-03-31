@@ -28,7 +28,7 @@
     "mcp-server-memory-bank": "dist/main/index.js"
   },
   "scripts": {
-    "build": "tsc && shx chmod +x dist/*.js",
+    "build": "tsc && shx chmod +x dist/**/*.js",
     "prepare": "npm run build",
     "dev": "ts-node src/main/index.ts",
     "test": "vitest run",
