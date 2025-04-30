@@ -43,8 +43,6 @@ The Memory Bank MCP Server transforms traditional file-based memory banks into a
 
 ## Installation
 
-### Installation
-
 To install Memory Bank Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@alioshr/memory-bank-mcp):
 
 ```bash
@@ -63,6 +61,7 @@ This will set up the MCP server configuration automatically. Alternatively, you 
 The memory bank MCP server needs to be configured in your Cline MCP settings file. The location depends on your setup:
 
 - For Cline extension: `~/Library/Application Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+- For Roo Code VS Code extension: `~/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/mcp_settings.json`
 - For Claude desktop app: `~/Library/Application Support/Claude/claude_desktop_config.json`
 
 Add the following configuration to your MCP settings:
@@ -102,7 +101,7 @@ Add the following configuration to your MCP settings:
 
 For Cursor, open the settings -> features -> add MCP server -> add the following:
 
-```
+```shell
 env MEMORY_BANK_ROOT=<path-to-bank> npx -y @allpepper/memory-bank-mcp@latest
 ```
 
@@ -112,19 +111,70 @@ This section contains the instructions that should be pasted on the AI custom in
 
 ## Development
 
+Basic development commands:
+
 ```bash
 # Install dependencies
 npm install
 
-# Build
+# Build the project
 npm run build
 
-# Test
+# Run tests
 npm run test
 
-# Watch mode
+# Run tests in watch mode
+npm run test:watch
+
+# Run the server directly with ts-node for quick testing
 npm run dev
 ```
+
+### Running with Docker
+
+1. Build the Docker image:
+
+    ```bash
+    docker build -t memory-bank-mcp:local .
+    ```
+
+2. Run the Docker container for testing:
+
+    ```bash
+    docker run -i --rm \
+      -e MEMORY_BANK_ROOT="/mnt/memory_bank" \
+      -v /path/to/memory-bank:/mnt/memory_bank \
+      --entrypoint /bin/sh \
+      memory-bank-mcp:local \
+      -c "ls -la /mnt/memory_bank"
+    ```
+
+3. Add MCP configuration, example for Roo Code:
+
+    ```json
+    "allpepper-memory-bank": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", 
+        "MEMORY_BANK_ROOT",
+        "-v", 
+        "/path/to/memory-bank:/mnt/memory_bank",
+        "memory-bank-mcp:local"
+      ],
+      "env": {
+        "MEMORY_BANK_ROOT": "/mnt/memory_bank"
+      },
+      "disabled": false,
+      "alwaysAllow": [
+        "list_projects",
+        "list_project_files",
+        "memory_bank_read",
+        "memory_bank_update",
+        "memory_bank_write"
+      ]
+    }
+    ```
 
 ## Contributing
 
