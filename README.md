@@ -56,7 +56,7 @@ This will set up the MCP server configuration automatically. Alternatively, you 
 1. Configure the MCP server in your settings (see Configuration section below)
 2. Start using the memory bank tools in your AI assistant
 
-## Configuration
+## Using with Cline
 
 The memory bank MCP server needs to be configured in your Cline MCP settings file. The location depends on your setup:
 
@@ -97,14 +97,14 @@ Add the following configuration to your MCP settings:
   - `list_projects`: List available projects
   - `list_project_files`: List files within a project
 
-## For Cursor
+## Using with Cursor
 
 For Cursor, open the settings -> features -> add MCP server -> add the following:
 
 ```shell
 env MEMORY_BANK_ROOT=<path-to-bank> npx -y @allpepper/memory-bank-mcp@latest
 ```
-## For Claude
+## Using with Claude
 
 1. Go to the root directory of your user
 2. Locate the file `.claude.json`
