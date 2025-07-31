@@ -104,6 +104,26 @@ For Cursor, open the settings -> features -> add MCP server -> add the following
 ```shell
 env MEMORY_BANK_ROOT=<path-to-bank> npx -y @allpepper/memory-bank-mcp@latest
 ```
+## For Claude
+
+1. Go to the root directory of your user
+2. Locate the file `.claude.json`
+3. Locate the property called `mcpServers`
+4. Paste this:
+
+```
+ "allPepper-memory-bank": {
+          "type": "stdio",
+          "command": "npx",
+          "args": [
+            "-y",
+            "@allpepper/memory-bank-mcp@latest"
+          ],
+          "env": {
+            "MEMORY_BANK_ROOT": "YOUR PATH"
+          }
+        }
+```
 
 ## Custom IA instructions
 
