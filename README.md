@@ -105,8 +105,8 @@ env MEMORY_BANK_ROOT=<path-to-bank> npx -y @allpepper/memory-bank-mcp@latest
 ```
 ## Using with Claude
 
-Claude desktop config file: ~/Library/Application Support/Claude/claude_desktop_config.json
-Claude Code config file:  `~/.claude.json`
+- Claude desktop config file: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Claude Code config file:  `~/.claude.json`
 
 1. Go to the root directory of your user
 2. Locate the config file
