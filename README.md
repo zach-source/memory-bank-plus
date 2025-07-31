@@ -56,13 +56,12 @@ This will set up the MCP server configuration automatically. Alternatively, you 
 1. Configure the MCP server in your settings (see Configuration section below)
 2. Start using the memory bank tools in your AI assistant
 
-## Using with Cline
+## Using with Cline/Roo Code
 
 The memory bank MCP server needs to be configured in your Cline MCP settings file. The location depends on your setup:
 
 - For Cline extension: `~/Library/Application Support/Cursor/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
 - For Roo Code VS Code extension: `~/Library/Application Support/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/mcp_settings.json`
-- For Claude desktop app: `~/Library/Application Support/Claude/claude_desktop_config.json`
 
 Add the following configuration to your MCP settings:
 
@@ -106,8 +105,11 @@ env MEMORY_BANK_ROOT=<path-to-bank> npx -y @allpepper/memory-bank-mcp@latest
 ```
 ## Using with Claude
 
+Claude desktop config file: ~/Library/Application Support/Claude/claude_desktop_config.json
+Claude Code config file:  `~/.claude.json`
+
 1. Go to the root directory of your user
-2. Locate the file `.claude.json`
+2. Locate the config file
 3. Locate the property called `mcpServers`
 4. Paste this:
 
