@@ -1,18 +1,16 @@
 import { Validator } from "../../../../presentation/protocols/validator.js";
-import { 
-  ValidatorComposite, 
+import {
   RequiredFieldValidator,
-  PathSecurityValidator 
+  ValidatorComposite,
 } from "../../../../validators/index.js";
 
 const makeValidations = (): Validator[] => {
   return [
-    new RequiredFieldValidator("projectName"),
-    new PathSecurityValidator("projectName"),
+    new RequiredFieldValidator("query"),
   ];
 };
 
-export const makeListProjectFilesValidation = (): Validator => {
+export const makeCompileContextValidation = (): Validator => {
   const validations = makeValidations();
   return new ValidatorComposite(validations);
 };

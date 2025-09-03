@@ -1,7 +1,9 @@
 import {
+  makeCompileContextController,
   makeListProjectFilesController,
   makeListProjectsController,
   makeReadController,
+  makeSearchController,
   makeUpdateController,
   makeWriteController,
 } from "../../factories/controllers/index.js";
@@ -114,6 +116,132 @@ export default () => {
       },
     },
     handler: adaptMcpRequestHandler(makeUpdateController()),
+  });
+
+  router.setTool({
+    schema: {
+      name: "memory_search",
+      description: "Search memory bank files using hybrid semantic and keyword search with advanced ranking",
+      inputSchema: {
+        type: "object",
+        properties: {
+          query: {
+            type: "string",
+            description: "The search query text",
+          },
+          projectName: {
+            type: "string",
+            description: "Optional project name to scope the search",
+          },
+          tags: {
+            type: "array",
+            items: {
+              type: "string",
+            },
+            description: "Optional tags to filter results",
+          },
+          limit: {
+            type: "number",
+            description: "Maximum number of results to return (default: 20)",
+            minimum: 1,
+            maximum: 100,
+          },
+          semanticWeight: {
+            type: "number",
+            description: "Weight for semantic similarity score (default: 0.4)",
+            minimum: 0,
+            maximum: 1,
+          },
+          recencyWeight: {
+            type: "number",
+            description: "Weight for recency score (default: 0.2)",
+            minimum: 0,
+            maximum: 1,
+          },
+          frequencyWeight: {
+            type: "number",
+            description: "Weight for frequency score (default: 0.2)",
+            minimum: 0,
+            maximum: 1,
+          },
+          salienceWeight: {
+            type: "number",
+            description: "Weight for salience score (default: 0.2)",
+            minimum: 0,
+            maximum: 1,
+          },
+          timeDecayDays: {
+            type: "number",
+            description: "Days for time decay calculation (default: 30)",
+            minimum: 1,
+          },
+        },
+        required: ["query"],
+      },
+    },
+    handler: adaptMcpRequestHandler(makeSearchController()),
+  });
+
+  router.setTool({
+    schema: {
+      name: "memory_compileContext",
+      description: "Compile and compress memory bank content into an optimal context for LLM consumption with budget constraints",
+      inputSchema: {
+        type: "object",
+        properties: {
+          query: {
+            type: "string",
+            description: "The query to compile context for",
+          },
+          maxTokens: {
+            type: "number",
+            description: "Maximum tokens for the compiled context (default: 4000)",
+            minimum: 500,
+            maximum: 32000,
+          },
+          reservedTokens: {
+            type: "number",
+            description: "Reserved tokens for system prompts, etc.",
+            minimum: 0,
+          },
+          compressionTarget: {
+            type: "number",
+            description: "Target compression ratio if budget exceeded (0-1, default: 0.3)",
+            minimum: 0.1,
+            maximum: 0.9,
+          },
+          projectName: {
+            type: "string",
+            description: "Optional project name to scope the search",
+          },
+          includeFiles: {
+            type: "boolean",
+            description: "Include individual files in context (default: true)",
+          },
+          includeSummaries: {
+            type: "boolean", 
+            description: "Include hierarchical summaries in context (default: true)",
+          },
+          compressionMethod: {
+            type: "string",
+            enum: ["llmlingua", "summarization", "extraction"],
+            description: "Compression method to use if needed (default: llmlingua)",
+          },
+          prioritizeRecent: {
+            type: "boolean",
+            description: "Prioritize recent content (default: true)",
+          },
+          maxRelevanceThreshold: {
+            type: "number",
+            description: "Minimum relevance threshold (0-1, default: 0.5)",
+            minimum: 0,
+            maximum: 1,
+          },
+        },
+        required: ["query"],
+      },
+    },
+    handler: adaptMcpRequestHandler(makeCompileContextController()),
   });
 
   return router;

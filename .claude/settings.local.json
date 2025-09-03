@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__activate_project",
+      "mcp__serena__check_onboarding_performed",
+      "mcp__sequential-thinking__sequentialthinking",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "mcp__memory__create_entities",
+      "mcp__memory__add_observations",
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(npm run test:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

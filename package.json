@@ -1,31 +1,38 @@
 {
-  "name": "@allpepper/memory-bank-mcp",
-  "version": "0.2.1",
-  "description": "MCP server for remote management of project memory banks",
+  "name": "memory-bank-plus",
+  "version": "1.0.0",
+  "description": "Advanced AI-powered memory bank with semantic search, hierarchical compilation, and reflexive learning capabilities",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alioshr/memory-bank-mcp.git"
+    "url": "git+https://github.com/zach-source/memory-bank-plus.git"
   },
   "keywords": [
     "mcp",
     "memory-bank",
-    "project-management",
-    "documentation",
-    "cline"
+    "ai",
+    "semantic-search", 
+    "vector-database",
+    "qdrant",
+    "hierarchical-memory",
+    "reflexive-learning",
+    "context-compression",
+    "hyde",
+    "raptor",
+    "llmlingua"
   ],
   "bugs": {
-    "url": "https://github.com/alioshr/memory-bank-mcp/issues"
+    "url": "https://github.com/zach-source/memory-bank-plus/issues"
   },
-  "homepage": "https://github.com/alioshr/memory-bank-mcp#readme",
+  "homepage": "https://github.com/zach-source/memory-bank-plus#readme",
   "main": "dist/main/index.js",
   "files": [
     "dist"
   ],
-  "author": "Aliosh Pimenta (alioshr)",
+  "author": "Zach Taylor <zctaylor.work@gmail.com> (based on memory-bank-mcp by Aliosh Pimenta)",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "mcp-server-memory-bank": "dist/main/index.js"
+    "memory-bank-plus": "dist/main/index.js"
   },
   "scripts": {
     "build": "tsc && shx chmod +x dist/**/*.js",
@@ -38,7 +45,9 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.5.0",
-    "fs-extra": "^11.2.0"
+    "@qdrant/js-client-rest": "^1.15.0",
+    "fs-extra": "^11.2.0",
+    "gray-matter": "^4.0.3"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
