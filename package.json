@@ -41,11 +41,15 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:benchmark": "tsx tests/integration/run-benchmark.ts",
+    "test:integration": "vitest run tests/integration/comprehensive-benchmark.spec.ts",
+    "test:mcp-client": "tsx tests/integration/mcp-client-driver.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.5.0",
     "@qdrant/js-client-rest": "^1.15.0",
+    "axios": "^1.6.0",
     "fs-extra": "^11.2.0",
     "gray-matter": "^4.0.3"
   },
@@ -57,6 +61,7 @@
     "@vitest/ui": "^3.0.8",
     "shx": "^0.4.0",
     "ts-node": "^10.9.2",
+    "tsx": "^4.6.0",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
   }

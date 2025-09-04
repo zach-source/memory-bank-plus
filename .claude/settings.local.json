@@ -12,7 +12,11 @@
       "mcp__memory__add_observations",
       "Bash(npm install)",
       "Bash(npm run build:*)",
-      "Bash(npm run test:*)"
+      "Bash(npm run test:*)",
+      "Bash(docker run:*)",
+      "Bash(tsx tests/integration/comprehensive-workflow-test.ts:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npm test)"
     ],
     "deny": [],
     "ask": []
