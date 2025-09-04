@@ -9,3 +9,4 @@ export * from "./compile-context.js";
 export * from "./reflexive-learning.js";
 export * from "./generate-or-retrieve.js";
 export * from "./evaluation-harness.js";
+export * from "./migrate-project.js";

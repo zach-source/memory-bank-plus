@@ -15,23 +15,28 @@ export class FsProjectRepository implements ProjectRepository {
 
   /**
    * Builds a path to a project directory
-   * @param projectName The name of the project
+   * @param projectName The name of the project or fully qualified path
    * @returns The full path to the project directory
    * @private
    */
   private buildProjectPath(projectName: string): string {
+    // If already a full path (absolute), use as-is
+    if (path.isAbsolute(projectName)) {
+      return projectName;
+    }
+    // Otherwise, join with root directory
     return path.join(this.rootDir, projectName);
   }
 
   /**
    * Lists all available projects
-   * @returns An array of Project objects
+   * @returns An array of Project objects (fully qualified paths)
    */
   async listProjects(): Promise<Project[]> {
     const entries = await fs.readdir(this.rootDir, { withFileTypes: true });
     const projects: Project[] = entries
       .filter((entry) => entry.isDirectory())
-      .map((entry) => entry.name);
+      .map((entry) => path.join(this.rootDir, entry.name));
 
     return projects;
   }

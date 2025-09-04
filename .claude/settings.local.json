@@ -16,7 +16,14 @@
       "Bash(docker run:*)",
       "Bash(tsx tests/integration/comprehensive-workflow-test.ts:*)",
       "Bash(npx tsx:*)",
-      "Bash(npm test)"
+      "Bash(npm test)",
+      "mcp__memory-bank__memory_bank_write",
+      "mcp__memory-bank__memory_search",
+      "mcp__memory-bank__memory_compileContext",
+      "mcp__memory-bank__list_project_files",
+      "Bash(echo:*)",
+      "Bash(npx prettier:*)",
+      "mcp__memory-bank__list_projects"
     ],
     "deny": [],
     "ask": []

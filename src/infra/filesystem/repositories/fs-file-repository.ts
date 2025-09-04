@@ -13,12 +13,27 @@ export class FsFileRepository implements FileRepository {
   constructor(private readonly rootDir: string) {}
 
   /**
+   * Builds a path to a project directory
+   * @param projectName The name of the project or fully qualified path
+   * @returns The full path to the project directory
+   * @private
+   */
+  private buildProjectPath(projectName: string): string {
+    // If already a full path (absolute), use as-is
+    if (path.isAbsolute(projectName)) {
+      return projectName;
+    }
+    // Otherwise, join with root directory
+    return path.join(this.rootDir, projectName);
+  }
+
+  /**
    * Lists all files in a project
-   * @param projectName The name of the project
+   * @param projectName The name of the project or fully qualified path
    * @returns An array of file names
    */
   async listFiles(projectName: string): Promise<File[]> {
-    const projectPath = path.join(this.rootDir, projectName);
+    const projectPath = this.buildProjectPath(projectName);
 
     const projectExists = await fs.pathExists(projectPath);
     if (!projectExists) {
@@ -37,9 +52,9 @@ export class FsFileRepository implements FileRepository {
    */
   async loadFile(
     projectName: string,
-    fileName: string
+    fileName: string,
   ): Promise<string | null> {
-    const filePath = path.join(this.rootDir, projectName, fileName);
+    const filePath = path.join(this.buildProjectPath(projectName), fileName);
 
     const fileExists = await fs.pathExists(filePath);
     if (!fileExists) {
@@ -60,9 +75,9 @@ export class FsFileRepository implements FileRepository {
   async writeFile(
     projectName: string,
     fileName: string,
-    content: string
+    content: string,
   ): Promise<File | null> {
-    const projectPath = path.join(this.rootDir, projectName);
+    const projectPath = this.buildProjectPath(projectName);
     await fs.ensureDir(projectPath);
 
     const filePath = path.join(projectPath, fileName);
@@ -87,9 +102,9 @@ export class FsFileRepository implements FileRepository {
   async updateFile(
     projectName: string,
     fileName: string,
-    content: string
+    content: string,
   ): Promise<File | null> {
-    const filePath = path.join(this.rootDir, projectName, fileName);
+    const filePath = path.join(this.buildProjectPath(projectName), fileName);
 
     const fileExists = await fs.pathExists(filePath);
     if (!fileExists) {

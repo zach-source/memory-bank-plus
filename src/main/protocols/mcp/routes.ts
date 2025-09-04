@@ -2,6 +2,7 @@ import {
   makeCompileContextController,
   makeListProjectFilesController,
   makeListProjectsController,
+  makeMigrateController,
   makeReadController,
   makeSearchController,
   makeUpdateController,
@@ -121,7 +122,8 @@ export default () => {
   router.setTool({
     schema: {
       name: "memory_search",
-      description: "Search memory bank files using hybrid semantic and keyword search with advanced ranking",
+      description:
+        "Search memory bank files using hybrid semantic and keyword search with advanced ranking",
       inputSchema: {
         type: "object",
         properties: {
@@ -185,7 +187,8 @@ export default () => {
   router.setTool({
     schema: {
       name: "memory_compileContext",
-      description: "Compile and compress memory bank content into an optimal context for LLM consumption with budget constraints",
+      description:
+        "Compile and compress memory bank content into an optimal context for LLM consumption with budget constraints",
       inputSchema: {
         type: "object",
         properties: {
@@ -195,7 +198,8 @@ export default () => {
           },
           maxTokens: {
             type: "number",
-            description: "Maximum tokens for the compiled context (default: 4000)",
+            description:
+              "Maximum tokens for the compiled context (default: 4000)",
             minimum: 500,
             maximum: 32000,
           },
@@ -206,7 +210,8 @@ export default () => {
           },
           compressionTarget: {
             type: "number",
-            description: "Target compression ratio if budget exceeded (0-1, default: 0.3)",
+            description:
+              "Target compression ratio if budget exceeded (0-1, default: 0.3)",
             minimum: 0.1,
             maximum: 0.9,
           },
@@ -219,13 +224,15 @@ export default () => {
             description: "Include individual files in context (default: true)",
           },
           includeSummaries: {
-            type: "boolean", 
-            description: "Include hierarchical summaries in context (default: true)",
+            type: "boolean",
+            description:
+              "Include hierarchical summaries in context (default: true)",
           },
           compressionMethod: {
             type: "string",
             enum: ["llmlingua", "summarization", "extraction"],
-            description: "Compression method to use if needed (default: llmlingua)",
+            description:
+              "Compression method to use if needed (default: llmlingua)",
           },
           prioritizeRecent: {
             type: "boolean",
@@ -242,6 +249,53 @@ export default () => {
       },
     },
     handler: adaptMcpRequestHandler(makeCompileContextController()),
+  });
+
+  router.setTool({
+    schema: {
+      name: "memory_migrateProject",
+      description:
+        "Migrate a memory bank project to a new name or path with optional reference updates",
+      inputSchema: {
+        type: "object",
+        properties: {
+          oldProjectName: {
+            type: "string",
+            description: "The current project name or path to migrate from",
+          },
+          newProjectName: {
+            type: "string",
+            description: "The new project name or path to migrate to",
+          },
+          options: {
+            type: "object",
+            properties: {
+              copyFiles: {
+                type: "boolean",
+                description: "Copy files instead of moving (default: false)",
+              },
+              preserveOriginal: {
+                type: "boolean",
+                description:
+                  "Keep original project after migration (default: false)",
+              },
+              updateReferences: {
+                type: "boolean",
+                description:
+                  "Update cross-project references in file content (default: true)",
+              },
+              validateTarget: {
+                type: "boolean",
+                description:
+                  "Validate target path doesn't exist (default: true)",
+              },
+            },
+          },
+        },
+        required: ["oldProjectName", "newProjectName"],
+      },
+    },
+    handler: adaptMcpRequestHandler(makeMigrateController()),
   });
 
   return router;
