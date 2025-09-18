@@ -23,7 +23,8 @@
       "mcp__memory-bank__list_project_files",
       "Bash(echo:*)",
       "Bash(npx prettier:*)",
-      "mcp__memory-bank__list_projects"
+      "mcp__memory-bank__list_projects",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

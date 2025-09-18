@@ -5,3 +5,4 @@ export * from "./llm-service.js";
 export * from "./summary-repository.js";
 export * from "./episodic-memory-repository.js";
 export * from "./query-expansion-service.js";
+export * from "./global-memory-repository.js";

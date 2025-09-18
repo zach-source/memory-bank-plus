@@ -7,3 +7,12 @@ node_modules
 .env.production.local
 dist
 coverage
+
+# Memory bank directories (hidden by default)
+.memory_bank/
+*.memory_bank/
+memory_bank/
+
+# Test and benchmark data
+benchmark-memory-banks/
+test-memory-banks/

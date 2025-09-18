@@ -2,15 +2,20 @@ import fs from "fs-extra";
 import path from "path";
 import { FileRepository } from "../../../data/protocols/file-repository.js";
 import { File } from "../../../domain/entities/index.js";
+import { GitIgnoreProtectionService } from "../../services/gitignore-protection-service.js";
 /**
  * Filesystem implementation of the FileRepository protocol
  */
 export class FsFileRepository implements FileRepository {
+  private gitIgnoreService: GitIgnoreProtectionService;
+
   /**
    * Creates a new FsFileRepository
    * @param rootDir The root directory where all projects are stored
    */
-  constructor(private readonly rootDir: string) {}
+  constructor(private readonly rootDir: string) {
+    this.gitIgnoreService = new GitIgnoreProtectionService();
+  }
 
   /**
    * Builds a path to a project directory
@@ -41,7 +46,22 @@ export class FsFileRepository implements FileRepository {
     }
 
     const entries = await fs.readdir(projectPath, { withFileTypes: true });
-    return entries.filter((entry) => entry.isFile()).map((entry) => entry.name);
+    const files: File[] = [];
+
+    for (const entry of entries) {
+      if (entry.isFile()) {
+        const filePath = path.join(projectPath, entry.name);
+
+        // Check if file should be ignored
+        const shouldIgnore =
+          await this.gitIgnoreService.shouldIgnoreFile(filePath);
+        if (!shouldIgnore) {
+          files.push(entry.name);
+        }
+      }
+    }
+
+    return files;
   }
 
   /**

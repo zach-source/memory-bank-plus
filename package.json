@@ -1,6 +1,6 @@
 {
   "name": "memory-bank-plus",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Advanced AI-powered memory bank with semantic search, hierarchical compilation, and reflexive learning capabilities",
   "repository": {
     "type": "git",
@@ -44,14 +44,21 @@
     "test:coverage": "vitest run --coverage",
     "test:benchmark": "tsx tests/integration/run-benchmark.ts",
     "test:integration": "vitest run tests/integration/comprehensive-benchmark.spec.ts",
-    "test:mcp-client": "tsx tests/integration/mcp-client-driver.ts"
+    "test:mcp-client": "tsx tests/integration/mcp-client-driver.ts",
+    "setup:init": "tsx scripts/setup-memory-bank.ts init",
+    "setup:migrate": "tsx scripts/setup-memory-bank.ts migrate",
+    "setup:qdrant": "tsx scripts/setup-memory-bank.ts setup-qdrant",
+    "setup:validate": "tsx scripts/setup-memory-bank.ts validate",
+    "setup:doctor": "tsx scripts/setup-memory-bank.ts doctor"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.5.0",
     "@qdrant/js-client-rest": "^1.15.0",
     "axios": "^1.6.0",
+    "commander": "^12.0.0",
     "fs-extra": "^11.2.0",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "minimatch": "^9.0.5"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
